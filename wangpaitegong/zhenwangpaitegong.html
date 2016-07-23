@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Title</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<canvas id="container" width="320" height="560"></canvas>
+<button id="gk2">关卡2</button>
+<!--<button id="clear">clear</button>-->
+<script src="guanka2.js"></script>
+<script src="clearhuabu.js"></script>
+<script src="xunlusuanfa.js"></script>
+<script src="fashezidan.js"></script>
+<script>
+      //初始画面
+      var container=document.getElementById("container");
+      var huabu=container.getContext("2d");
+      //地图点对象
+      function Ditu(x,y,a,b,i,j){
+          this.x=x;
+          this.y=y;
+          this.fatherx=a;
+          this.fathery=b;
+          this.flag=0;
+          this.i=i;
+          this.j=j;
+          this.juli=0;
+
+      };
+      //定义地图16*28个块
+      var ditu=[];
+      function ditubianse(node){
+          huabu.beginPath();
+          huabu.rect(node.x,node.y,20,20);
+          huabu.fillStyle="#FFFFE0";
+          huabu.fill();
+          huabu.strokeStyle="#FFFFE0";
+          huabu.stroke();
+      }
+      for(var i=0;i<16;i++)
+      {
+          ditu[i]=[];
+          for(var j=0;j<28;j++)
+          {
+              ditu[i][j]=new Ditu(i*20,j*20,0,0,i,j);
+              ditubianse(ditu[i][j]);
+          }
+      };
+
+      //定义特工,画出特工
+      var tegong=ditu[7][0];
+      tegong.fatherx=-1;
+      tegong.fathery=-1;
+      tegong.flag=1;
+
+      function huategong(tegong)
+      {
+          huabu.beginPath();
+          huabu.arc(tegong.x+10,tegong.y+10,8,0,2*Math.PI,true);
+          huabu.fillStyle="blue";
+          huabu.fill();
+          huabu.strokeStyle="blue";
+          huabu.stroke();
+      }
+      huategong(tegong);
+
+      //定以目标，画出目标
+      var zhongdian=ditu[7][27];
+      function huamubiao(node){
+          huabu.beginPath();
+          huabu.moveTo(node.x,node.y);
+          huabu.lineTo(node.x+20,node.y);
+          huabu.lineTo(node.x+10,node.y+20);
+          huabu.closePath();
+          huabu.fillStyle="orange";
+          huabu.fill();
+      }
+      huamubiao(zhongdian);
+
+      //画出障碍物
+      //制作障碍物
+      var zhangaiwushuzu=[];
+      function bianhei(node){
+          huabu.beginPath();
+          huabu.rect(node.x,node.y,20,20);
+          huabu.fillStyle="black";
+          huabu.fill();
+          huabu.strokeStyle="black";
+          huabu.stroke();
+      }
+
+      function zhangaiwu()
+      {
+          var a=Math.floor(Math.random()*16);
+          var b=Math.floor(Math.random()*28);
+          while(a==zhongdian.i&&b==zhongdian.j)
+          {
+              var a=Math.floor(Math.random()*16);
+              var b=Math.floor(Math.random()*28);
+          }
+          while(ditu[a][b].flag==1)
+          {
+              var a=Math.floor(Math.random()*16);
+              var b=Math.floor(Math.random()*28);
+          }
+          ditu[a][b].flag=1;
+          bianhei(ditu[a][b]);
+          zhangaiwushuzu.push(ditu[a][b]);
+      }
+      for(var n=0;n<50;n++)
+      {
+          zhangaiwu();
+      }
+
+
+
+
+      var luxianshuzu=[];
+      var duilie=[];
+      var zouguodeshuzu=[];
+
+
+
+          container.onclick=function(e)
+          {
+              duilie=[];
+              luxianshuzu=[];
+//              console.log(tegong);
+              e=e||window.event;
+              var mx= Math.floor(e.pageX/20);
+              var my= Math.floor(e.pageY/20);
+              /*if(mx==tegong.i&&my==tegong.j)
+              {
+                  return;
+              }
+              for(var i=0;i<zhangaiwushuzu.length;i++)
+              {
+                  if(mx==zhangaiwushuzu[i].i&&my==zhangaiwushuzu[i].j)
+                  {
+                      return;
+                  }
+              }*/
+              if(ditu[mx][my].flag==1)
+              {
+                  return;
+              }
+              xunlusuanfa(ditu[mx][my]);
+          }
+    var obtn0=document.getElementById("gk2");
+    obtn0.onclick=chushihua;
+
+
+      for(var i=0;i<direnshuzu.length;i++)
+      {
+          var juli=(tegong.x-direnshuzu[i].x)*(tegong.x-direnshuzu[i].x)+
+                  (tegong.y-direnshuzu[i].y)*(tegong.y-direnshuzu[i].y);
+          var jiexian=98*98;
+          if(juli<jiexian)
+          {
+              alert("警告");
+          }
+          console.log(juli);
+      }
+    var time4=setInterval(function(
+    ){
+
+        clearhuabu(tegong);
+    },20);
+
+    var time5=setInterval(function()
+    {
+        for(var i=0;i<direnshuzu.length;i++)
+        {
+            var juli=(tegong.x-direnshuzu[i].x)*(tegong.x-direnshuzu[i].x)+
+                    (tegong.y-direnshuzu[i].y)*(tegong.y-direnshuzu[i].y);
+            var jiexian=98*98;
+            if(juli<jiexian)
+            {
+                console.log("警告");
+                fashezidan(direnshuzu[i],tegong);
+            }
+
+            //console.log(juli);
+        }
+    },600);
+
+
+
+    
+
+
+
+</script>
+
+
+
+</body>
+</html>
