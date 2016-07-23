@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *
+        {
+            margin:0;
+            padding: 0;
+        }
+        ul
+        {
+            list-style: none;
+        }
+        #container
+        {
+            width: 1200px;
+            height: 1112px;
+            overflow: hidden;
+
+            margin: 30px;auto;
+
+        }
+        #imgs
+        {
+            width: 1200px;
+            height: 800px;
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        #imgs li
+        {
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        #prev1,#next1
+        {
+            position: absolute;
+            width: 600px;
+            height: 800px;
+             background: blue;
+            top:0;
+            z-index: 9998;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
+
+
+        }
+        #prev1
+        {
+
+          left: 0;
+
+
+        }
+        #next1
+        {
+           right: 0;
+
+
+        }
+        #prev
+        {
+            width: 27px;
+            height: 50px;
+            background: url("images/arrow-left-light.png");
+            float: left;
+            margin-top: 387px;
+            z-index: 9999;
+            position: absolute;
+            left:0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        #next
+        {
+            width: 27px;
+            height: 50px;
+            background: url("images/arrow-right-light.png");
+            float: right;
+            margin-top: 387px;
+            z-index: 9999;
+            position: absolute;
+            right: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        #pic-intro
+        {
+            z-index: 9999;
+            width: 1200px;
+            height: 30px;
+            background:#000;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        #pic-title
+        {
+            color: white;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+        #pic-num
+        {
+            color: white;
+            line-height: 30px;
+            margin-right: 10px;
+            float: right;
+            margin-right: 10px;
+        }
+
+        #thumb-imgs
+        {
+            width: 1200px;
+            height: 311px;
+            background-color:grey;
+            position: relative;
+        }
+        #small-pic
+        {
+            width: 1200px;
+            height: 297px;
+            position: absolute;
+            left: 13px;
+            top:7px;
+            cursor: pointer;
+        }
+        #small-pic li
+        {
+            width: 383px;
+            height: 297px;
+            padding-right: 13px;
+            float: left;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+        #small-pic img
+        {
+            width: 100%;
+            height: 100%;
+        }
+       #music
+       {
+           position: absolute;
+
+       }
+        #container
+        {
+            margin:  0 auto;
+        }
+
+    </style>
+    <bgsound src="music/yicijiuhao.mp3" loop="-1">
+</head>
+<body>
+
+<div id="container">
+    <div id="imgs">
+        <ul id="big-pic">
+            <li style="z-index: 1"><img src="images/1.jpg" title="我记得第一次见到你是第一次开会前，你是第一个到的，而我是第二个。不过咱两开始熟悉是因为篮球！" alt=""/></li>
+            <li><img src="images/2.jpg" title="我就是不肯把衣服给你，心疼，少洗一件是一件~" alt=""/></li>
+            <li><img src="images/3.jpg" title="咱们一起排练，一起笑~" alt=""/></li>
+            <li><img src="images/4.jpg" title="还记得鹏飞队这个名字还是你起的。" alt=""/></li>
+            <li><img src="images/5.jpg"  title="挺喜欢这张的，非常有爱。" alt=""/></li>
+
+            <li><img src="images/7.jpg" title="你是我最美的风景！" alt=""/></li>
+            <li><img src="images/8.jpg" title="就是想在你身边" alt=""/></li>
+            <li><img src="images/9.jpg" title="我就这么点追求了，就如那天早上，两个人，一个空教室，要是我能就这么一直听你唱歌就好了，你的声音真好听。" alt=""/></li>
+            <li><img src="images/10.jpg" title="想看你笑 想和你闹 想拥你入我怀抱" alt=""/></li>
+            <li><img src="images/11.jpg" title="跟大家在一起的感觉真好" alt=""/></li>
+            <li><img src="images/12.jpg" title="拍到好照片，第一个想要分享的人是你" alt=""/></li>
+            <li><img src="images/13.jpg" title="把你拍得美美的" alt=""/></li>
+            <li><img src="images/14.jpg" title="有时候我也挺帅的 是吧→_→" alt=""/></li>
+            <li><img src="images/15.jpg" title="2016 我们 加油！" alt=""/></li>
+            <li><img src="images/16.jpg" title="一次就好 想陪你去看天荒地老" alt=""/></li>
+        </ul>
+        <div id="pic-intro">
+            <span id="pic-title">我记得第一次见到你是第一次开会前，你是第一个到的，而我是第二个。不过咱两开始熟悉是因为篮球！</span>
+
+            <div id="pic-num">
+                <span id="curr-num">1</span>
+                /
+                <span id="total-num"></span>
+            </div>
+        </div>
+        <div id="prev1"></div>
+        <div id="next1"></div>
+        <span id="prev"></span>
+        <span id="next"></span>
+    </div>
+
+    <div id="thumb-imgs">
+        <ul id="small-pic">
+            <li style="opacity: 1;filter: alpha(opacity=100);"><img src="images/1.jpg"  alt=""/></li>
+            <li><img src="images/2.jpg"  alt=""/></li>
+            <li><img src="images/3.jpg" alt=""/></li>
+            <li><img src="images/4.jpg"  alt=""/></li>
+            <li><img src="images/5.jpg"  alt=""/></li>
+
+            <li><img src="images/7.jpg" alt=""/></li>
+            <li><img src="images/8.jpg" alt=""/></li>
+            <li><img src="images/9.jpg" alt=""/></li>
+            <li><img src="images/10.jpg" alt=""/></li>
+            <li><img src="images/11.jpg" alt=""/></li>
+            <li><img src="images/12.jpg" alt=""/></li>
+            <li><img src="images/13.jpg" alt=""/></li>
+            <li><img src="images/14.jpg" alt=""/></li>
+            <li><img src="images/15.jpg" alt=""/></li>
+            <li><img src="images/16.jpg" alt=""/></li>
+        </ul>
+
+    </div>
+
+    <div id="music">
+        <audio autoplay="autoplay" controls="controls"loop="loop" preload="auto"
+               src="music/yicijiuhao.mp3">
+            你的浏览器不支持audio标签
+        </audio>
+    </div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+     var oprev=document.getElementById("prev");
+     var onext=document.getElementById("next");
+    var oprev1=document.getElementById("prev1");
+    var onext1=document.getElementById("next1");
+     var osmallpic=document.getElementById("small-pic");
+     var oli1=osmallpic.getElementsByTagName("li");
+     var obigpic=document.getElementById("big-pic");
+     var oli2=obigpic.getElementsByTagName("li");
+     var x=document.getElementById("curr-num");
+     var owenzi=document.getElementById("pic-title");
+     var oimg=obigpic.getElementsByTagName("img");
+     var index=0;
+     var izindex=2;
+
+     osmallpic.style.width=(oli1.length*oli1[0].offsetWidth)+"px";
+    /*oprev1.onmouseover=onext1.onmouseover=function(){
+        if(this==oprev1)
+        {
+            $(oprev).animate({opacity:1});
+
+        }
+        else
+        {
+            $(onext).animate({opacity:1});
+        }
+    };
+     oprev1.onmouseout=onext1.onmouseout=function(){
+         if(this==oprev1)
+         {
+             $(oprev).animate({opacity:0});
+
+         }
+         else
+         {
+             $(onext).animate({opacity:0});
+         }
+     };*/
+
+     /*oprev1.addEventListener("mouseover",function(e){
+         if(e.target==this)
+         {
+             $(oprev).animate({opacity:1});
+         }
+
+     },false)
+
+     oprev1.addEventListener("mouseout",function(e){
+         if(e.target==this && e.relatedTarget!=onext)
+         $(oprev).animate({opacity:0});
+     },false)*/
+
+     $(oprev1).on("mouseenter",function(){
+        $(oprev).stop().animate({opacity:1});
+     });
+     $(oprev).on("mouseenter",function(){
+         $(oprev).stop().animate({opacity:1});
+     });
+     $(oprev1).on("mouseleave",function(){
+         $(oprev).stop().animate({opacity:0});
+     });
+     $(onext1).on("mouseenter",function(){
+         $(onext).stop().animate({opacity:1});
+     });
+     $(onext).on("mouseenter",function(){
+         $(onext).stop().animate({opacity:1});
+     });
+     $(onext1).on("mouseleave",function(){
+         $(onext).stop().animate({opacity:0});
+     });
+
+
+    oprev.onclick=onext.onclick=function(){
+        if(this==oprev)
+        {
+            index--;
+            if(index<0)
+            {
+                index=oli2.length-1;
+            }
+            change(index)
+
+        }
+        else
+        {
+            index++;
+            if(index==oli2.length)
+            {
+                index=0;
+            }
+            change(index);
+        }
+    };
+
+    for(var i=0;i<oli1.length;i++)
+    {
+        oli1[i].index=i;
+        oli1[i].onmouseover=function(){
+            this.style.opacity=1;
+            this.style.filter="alpha(opacity=100)";
+        };
+        oli1[i].onmouseout=function(){
+           if(this.index!=index)
+           this.style.opacity=0.6;
+            this.style.filter="alpha(opacity=60)";
+        };
+        oli1[i].onclick=function(){
+            for(var a=0;a<oli1.length;a++)
+            {
+                oli1[a].style.opacity=0.6;
+                oli1[a].style.filter="alpha(opacity=60)";
+            }
+            this.style.filter="alpha(opacity=100)";
+            this.style.opacity=1;
+            index=this.index;
+            change(index);
+        }
+    };
+
+    function change(idx)
+    {
+        oli2[idx].style.zIndex=izindex++;
+        oli2[idx].style.height=0;
+        $(oli2[idx]).animate({height:800});
+        for(var a=0;a<oli1.length;a++)
+        {
+            oli1[a].style.opacity=0.6;
+            oli1[a].style.filter="alpha(opacity=60)";
+        }
+        oli1[idx].style.opacity=1;
+        oli1[idx].style.filter="alpha(opacity=100)";
+        if(idx==0)
+        {
+            $(osmallpic).animate({left:13});
+        }
+        else if(idx==oli2.length-1)
+        {
+            $(osmallpic).animate({left:-(idx-2)*oli1[0].offsetWidth+13});
+        }
+        else
+        {
+            $(osmallpic).animate({left:-(idx-1)*oli1[0].offsetWidth+13});
+        }
+        owenzi.innerHTML=oimg[index].title;
+        x.innerHTML=index+1;
+    };
+    setInterval(function(){
+        index++;
+        if(index==oli2.length)
+        {index=0}
+        change(index);
+    },3000);
+    var y=document.getElementById("total-num");
+     y.innerHTML=oli2.length;
+</script>
+</div>
+</body>
+</html>

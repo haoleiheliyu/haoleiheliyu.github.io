@@ -1,0 +1,57 @@
+#huifuchuangkou
+{
+    position: fixed;
+    border: 1px solid black;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top:0;
+    width: 700px;
+    height: 230px;
+    border-radius: 5px;
+    background: yellow;
+    display: none;
+}
+
+.shangbian1
+{
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 30px;
+    background: aqua;
+    line-height: 30px;
+}
+#tou1
+{
+    margin-left: 5px;
+    float: left;
+}
+#tou2
+{
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.huifuchuangkou
+{
+    /*border: 1px solid black;*/
+    width: 90%;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 10px;
+
+
+}
+#cexiao
+{
+    float: right;
+    margin-top: 5px;
+}
+#querenhuifu
+{
+    margin-top: 5px;
+    float: right;
+    margin-right: 31px;
+}

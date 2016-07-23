@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        #fuqing
+        {
+            width:800px;
+            height: 300px;
+            border: 2px solid black;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            margin-left: 100px;
+        }
+        div
+        {
+            display: flex;
+            margin: 15px;
+            padding: 11px;
+            border: 2px solid black;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        #button0
+        {
+            margin-left: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div id="fuqing">
+    <div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<br>
+<input type="button" value="前序" style="width: 200px;height: 200px;font-size: 50px" id="button0">
+<input type="button" value="中序" style="width: 200px;height: 200px;font-size: 50px" id="button1">
+<input type="button" value="后序" style="width: 200px;height: 200px;font-size: 50px" id="button2">
+
+</body>
+<script>
+    var a=[];
+    var fu=document.getElementById("fuqing");
+    function qianxu(node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        /* alert(node.innerHTML);*/
+        a.push(node);
+        qianxu(node.firstElementChild);
+        qianxu(node.lastElementChild);
+    }
+    function zhongxu(node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        /* alert(node.innerHTML);*/
+        zhongxu(node.firstElementChild);
+        a.push(node);
+        zhongxu(node.lastElementChild);
+    }
+
+    function houxu(node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        /* alert(node.innerHTML);*/
+        houxu(node.firstElementChild);
+        houxu(node.lastElementChild);
+        a.push(node);
+    }
+
+
+
+    function bianse(node)
+    {
+        node.style.backgroundColor="red";
+    }
+    var i=0;
+    function kaishi()
+    {
+        var time=setInterval(function()
+        {
+            if(i== a.length-1)
+            {
+                clearInterval(time);
+            }
+            t=i;
+            for(i=0;i<a.length;i++)
+            {
+                a[i].style.backgroundColor="white";
+            }
+            a[t].style.backgroundColor="red";
+            i=t;
+            i++;
+        },500);
+    }
+    var obutton0=document.getElementById("button0");
+    var obutton1=document.getElementById("button1");
+    var obutton2=document.getElementById("button2");
+
+    obutton0.onclick=function()
+    {
+        qianxu(fu);
+        kaishi();
+    }
+    obutton1.onclick=function()
+    {
+        zhongxu(fu);
+        kaishi();
+    }
+    obutton2.onclick=function()
+    {
+        houxu(fu);
+        kaishi();
+    }
+
+</script>
+</html>
