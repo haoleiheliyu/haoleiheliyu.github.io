@@ -3,6 +3,60 @@
     margin: 0;
     padding: 0;
 }
+ul
+{
+    list-style: none;
+}
+ul li
+{
+    float: left;
+}
+
+
+/*header和nav样式*/
+    #header
+    {
+        width: 100%;
+        position: relative;
+    }
+    #header>img
+    {
+        width: 100%;
+    }
+    #nav
+    {
+        width: 100%;
+        /*background: black;*/
+        height: 40px;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        color: white;
+    }
+    #nav-ul
+    {
+        width: 80%;
+        /*background: white;*/
+        height: 40px;
+        margin: 0 auto;
+    }
+    #nav-ul>li
+    {
+        width: 25%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: white;
+    }
+    #nav-ul>li>a
+    {
+        text-decoration: none;
+        color: white;
+
+    }
+
+/*header和nav样式*/
+
 
 /** section0样式在此！*/
     #section0
@@ -10,14 +64,14 @@
         position: relative;
         width: 1263px;
         height: 588px;
-        background: lightskyblue;
+        /*background: lightskyblue;*/
         margin: 0 auto;
     }
     #part1
     {
         width: 37%;
         height: 100%;
-        background: yellow;
+        /*background: yellow;*/
         /*background-image: url("../images/zuobian.png");*/
     }
     #part1
@@ -35,21 +89,23 @@
         width: 63%;
         height: 16%;
         float: left;
-        background: greenyellow;
+        /*background: greenyellow;*/
     }
     #part3
     {
         width: 63%;
         height: 42%;
-        background: orangered;
+        /*background: orangered;*/
         float: left;
+        position: relative;
     }
     #part4
     {
         width: 63%;
         height: 42%;
-        background: papayawhip;
+        /*background: papayawhip;*/
         float: left;
+        position: relative;
     }
     #div1,#div2/*,#div4,#div5,#div6*/
     {
@@ -57,7 +113,7 @@
         border: 3px solid white;
         height: 98%;
         float: left;
-        background: black;
+        background: pink;
         overflow: hidden;
         position: relative;
         /*display: flex;
@@ -72,7 +128,7 @@
         border: 3px solid white;
         height: 98%;
         float: left;
-        background: black;
+        background: pink;
         overflow: hidden;
         position: relative;
 
@@ -84,7 +140,7 @@
         border: 3px solid white;
         height: 98%;
         float: left;
-        background: black;
+        background: pink;
         overflow: hidden;
         position: relative;
 
@@ -95,7 +151,7 @@
         border: 3px solid white;
         height: 98%;
         float: left;
-        background: black;
+        background: pink;
         overflow: hidden;
         position: relative;
 
@@ -128,6 +184,7 @@
 
     #div1>img,#div2>img,#div3>img,#div4>img,#div5>img,#div6>img
     {
+        position: absolute;
         /*clear: both;*/
         width: 100%;
         height: 100%;
@@ -165,7 +222,7 @@
         position: absolute;
         z-index: 3;
         /*display: none;*/
-        font-size: 30px;
+        /*font-size: 30px;*/
         -webkit-transition: all 1s;
         /*-moz-transition: all time;*/
         /*-ms-transition: all time;*/
@@ -179,8 +236,31 @@
         display: block;
 
     }
-
 /*section0响应式设计*/
+
+
+@media  (min-width: 1599px) {
+
+    #section0
+    {
+        width: 1580px;
+        height: 736px;
+    }
+
+}
+
+
+
+@media  (max-width: 1153px) {
+
+    #section0
+    {
+        width: 1135px;
+        height: 528px;
+    }
+
+}
+
 @media  (max-width: 1153px) {
 
     #section0
@@ -228,21 +308,322 @@
 
 
 
-@media  (max-width: 414px) {
+@media  (max-width: 415px) {
 
     #section0
     {
         width: 100%;
-        /*height: 469px;*/
+        height: auto;
     }
     #div1,#div2,#div3,#div4,#div5,#div6
     {
-        border: 0;
+        /*border: 0;*/
+        width: 100%;
+        height: 0;
+        padding-bottom: 95.07389162561576%;
+    }
+    #div1>img
+    {
+
     }
 
+    #part3,#part4
+    {
+
+        width: 100%;
+        height: 0;
+        padding-bottom: 285.2216748768473%;
+        /*height: 1000px;*/
+    }
+    #part2
+    {
+        width: 100%;
+        display: block;
+    }
+    #part1
+    {
+        width: 100%;
+        height: 0;
+        padding-bottom:124.4210526315789%
+    }
+    /*#clear
+    {
+        clear: both;
+        height: 0; line-height: 0; font-size: 0;
+    }*/
+    /*#section0
+    {
+        overflow: auto;
+    }*/
+    #section0:after
+    {
+        content: "";
+        clear: both;
+        display: block;
+        width: 0;height: 0;visibility:hidden;
+
+    }
+
+
+
+
+
+
 }
+
 /**section0样式结束在此！！*/
 
+/*网页第二个模块！画廊！*/
+.wrap
+{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background: #333333;
+    overflow: hidden;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -ms-perspective: 800px;
+    perspective: 800px;
+}
+/*海报样式*/
+.photo
+{
+    width: 360px;
+    height: 240px;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 0 1px rgba(0,0,0,.01);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+/*正反面共同样式*/
+.photo .side
+{
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    position: absolute;
+    top:0;
+    right: 0;
+    padding: 10px;
+    /*box-sizing: border-box;*/
+}
+/*正面*/
+.photo .side-front
+{
+    /*display: none;*/
+
+}
+.photo .side-front .image
+{
+    width: 100%;
+    /*height: 250px;*/
+    height: 100%;
+    /*line-height: 250px;*/
+    overflow: hidden;
+
+}
+.photo .side-front .image img
+{
+    width: 100%;
+    /*height: 100%;*/
+
+}
+.photo .side-front .caption
+{
+    text-align: center;
+    font-size: 16px;
+    line-height: 50px;
+
+}
+/*反面*/
+.photo .side-back
+{
+}
+.photo .side-back .desc
+{
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+/*当前选中的海报样式*/
+.photo_center
+{
+    left: 50%;
+    top:50%;
+    margin: -130px 0 0 -180px;
+    z-index: 999;
+}
+/*负责翻转*/
+.photo-wrap
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all .6s;
+    -moz-transition: all .6s;
+    -ms-transition: all .6s;
+    -o-transition: all .6s;
+    transition: all .6s;
+}
+.photo-wrap .side-front
+{
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+
+}
+.photo-wrap .side-back
+{
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+
+}
+.photo-wrap .side
+{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;;
+}
+
+.photo_front .photo-wrap{
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+.photo_back .photo-wrap{
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+/*控制按钮样式*/
+@font-face {
+    font-family: "icons";
+    src: url('icons.woff')format('woff');
+    font-weight:normal;
+    /*font-size:normal;*/
+}
+.nav
+{
+    width: 80%;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 10%;
+    bottom: 45px;
+    z-index: 999;
+    /*background: #ffffff;*/
+    text-align: center;
+}
+/*普通样式*/
+.nav .i
+{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    cursor: pointer;
+    background: #aaaaaa;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-transform: scale(.48);
+    -moz-transform: scale(.48);
+    -ms-transform: scale(.48);
+    -o-transform: scale(.48);
+    transform: scale(.48);
+
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+
+}
+.nav .i:after
+{
+    content:"\e600";
+    font-family:"icons";
+    font-size: 80%;
+    display:inline-block;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    color:#fff;
+    opacity:0;
+}
+/*选中样式*/
+.nav .i_current{
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+.nav .i_current:after
+{
+    opacity: 1;
+}
+
+/*背面样式*/
+.nav .i_back{
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    background: #555555;
+}
+
+/*切换过渡*/
+.photo
+{
+    left: 50%;
+    top: 50%;
+    margin: -130px 0 0 -180px;
+}
+.photo-wrap
+{
+    -webkit-transform-origin:0% 50%;
+    -moz-transform-origin:0% 50%;
+    -ms-transform-origin:0% 50%;
+    -o-transform-origin:0% 50%;
+    transform-origin:0% 50%;
+}
+.photo_front .photo-wrap
+{
+    -webkit-transform: translate(0px,0px) rotateY(0deg);
+    -moz-transform: translate(0px,0px) rotateY(0deg);
+    -ms-transform: translate(0px,0px) rotateY(0deg);
+    -o-transform: translate(0px,0px) rotateY(0deg);
+    transform: translate(0px,0px) rotateY(0deg);
+}
+.photo_back .photo-wrap
+{
+    -webkit-transform: translate(360px,0px) rotateY(180deg);
+    -moz-transform: translate(360px,0px) rotateY(180deg);
+    -ms-transform: translate(360px,0px) rotateY(180deg);
+    -o-transform: translate(360px,0px) rotateY(180deg);
+    transform: translate(360px,0px) rotateY(180deg);
+}
+/*画廊在此结束*/
 
 
 
