@@ -11,6 +11,10 @@ ul li
 {
     float: left;
 }
+body
+{
+    /*font-size: 62.5%;*/
+}
 
 
 /*header和nav样式*/
@@ -26,10 +30,10 @@ ul li
     #nav
     {
         width: 100%;
-        /*background: black;*/
-        height: 40px;
-        position: absolute;
-        z-index: 1;
+        background: rgba(0,0,0,0.5);
+        height: 30px;
+        position: fixed;
+        z-index: 1000;
         top: 0;
         color: white;
     }
@@ -42,9 +46,9 @@ ul li
     }
     #nav-ul>li
     {
-        width: 25%;
+        width: 14%;
         height: 40px;
-        line-height: 40px;
+        line-height: 30px;
         text-align: center;
         color: white;
     }
@@ -52,13 +56,18 @@ ul li
     {
         text-decoration: none;
         color: white;
-
+        transition: all 1s ease;
+    }
+    #nav-ul>li>a:hover
+    {
+        color: yellow;
     }
 
 /*header和nav样式*/
 
 
 /** section0样式在此！*/
+
     #section0
     {
         position: relative;
@@ -217,7 +226,9 @@ ul li
 
     .info
     {
-        left:23%;
+        left:34%;
+        font-family: '黑体';
+
         top:58%;
         position: absolute;
         z-index: 3;
@@ -389,6 +400,7 @@ ul li
 /*海报样式*/
 .photo
 {
+    cursor: pointer;
     width: 360px;
     height: 240px;
     position: absolute;
@@ -625,8 +637,193 @@ ul li
 }
 /*画廊在此结束*/
 
+/*联系我模块*/
+#contact
+{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 53.4375%;
+    /*background: url("../images/2333.jpg") no-repeat;*/
+    /*background-size: cover;*/
+
+    /*text-align: center;*/
+
+}
+#contact-h1>h1
+{
+    text-align: center;
+}
+
+#contact-h1
+{
+
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    top: 17%;
+    font-family: fantasy;
+}
+#contact-form
+{
+    position: absolute;
+    width: 100%;
+    /*height: 400px;*/
+    /*height: 60%;*/
+    /*margin: 0 auto;*/
+    /*background: red;*/
+    top: 30%;
+}
+#contact-form0
+{
+    width: 40%;
+    height: 100%;
+    /*height: 400px;*/
+    /*background: blue;*/
+    margin: 0 auto;
+}
+#contact-form0>input
+{
+    border:1px solid black;
+    height: 30px;
+
+}
+#contact-form0>textarea
+{
+    margin-top: 5px;
+}
+#sub
+{
+    margin-top: 5px;
+    width: 100%;
+    color: white;
+    background: black;
+}
 
 
+/*联系我模块*/
+
+/*返回按钮*/
+#fanhui
+{
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    cursor: pointer;
+    z-index: 1;
+    display: none;
+}
+/*返回按钮*/
+
+/*section1*/
+#section1
+{
+    width: 100%;
+    height:0;
+    padding-bottom: 53.03314571607255%;
+    position: relative;
+}
+#lunbo1
+{
+    width: 1200px;
+    margin: 0 auto;
+    height: 600px;
+    /*background: yellow;*/
+    position: absolute;
+    left: 50%;
+    margin-left: -600px;
+    top: 50%;
+    margin-top: -300px;
+    overflow: hidden;
+}
+#lunbo1>#lunbo1-ul
+{
+    position: absolute;
+    height: 266px;
+    background: gold;
+    top:50%;
+    margin-top: -133px;
+
+}
+#lunbo1>#lunbo1-ul>li
+{
+    width: 400px;
+    height: 266px;
+    /*float: left;*/
+    position: absolute;
+
+
+
+}
+.a
+{
+    z-index: 999;
+
+    /*transform: scale(1.5);*/
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    transform: scale(1.4);
+    /*transition: transform .5s ease;*/
+    -webkit-transition: transform 1s ease;
+    -moz-transition: transform 1s ease;
+    -ms-transition: transform 1s ease;
+    -o-transition: transform 1s ease;
+    transition: transform 1s ease;
+
+}
+#section1-left,#section1-right
+{
+    display: inline-block;
+    position: absolute;
+    z-index: 999;
+    cursor: pointer;
+}
+#section1-left
+{
+    left: 0;
+    top: 50%;
+    margin-top: -37px;
+}
+#section1-right
+{
+    right: 0;
+    top: 50%;
+    margin-top: -37px;
+}
+
+/*section1*/
+
+/*section3*/
+#section3
+{
+    width: 100%;
+    height:0;
+    padding-bottom:53.0625%;
+    position: relative;
+}
+#ziwojieshao
+{
+    position: absolute;
+    width: 50%;
+    height: 500px;
+    /*background: ivory;*/
+    top: 50%;
+    margin-top: -250px;
+    right: 50px;
+}
+#ziwojieshao>h1
+{
+    text-align: center;
+}
+#lianxiwo
+{
+    position: absolute;
+    right: 0;
+}
+
+/*section3*/
 
 
 

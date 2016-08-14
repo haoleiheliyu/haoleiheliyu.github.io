@@ -37,7 +37,7 @@ for(var i=0;i<apart3.length;i++)
         adiv1[0].style.opacity=1;
         adiv1[0].style.top="41%";
         adiv1[1].style.opacity=0.6;
-        adiv1[2].style.transform="scale(1.05)";
+        adiv1[2].style.transform="scale(1.1)";
         this.onmouseout=function () {
             adiv1[0].style.opacity=0;
             adiv1[0].style.top="58%";
@@ -214,3 +214,125 @@ function turn(elem) {
     return elem.className=cls;
 }
 // 第二个元素控制模块结束
+
+// nav控制模块 header
+var alink=document.querySelectorAll(".link")
+for(var i=0;i<alink.length;i++)
+{
+    alink[i].onclick=function (e) {
+        e=e||window.event;
+        // console.log(this.href);
+        var hash=this.href.substring(this.href.indexOf('#')+1);
+        // console.log(hash);
+        var odiv=document.getElementById(hash);
+        // console.log(odiv);
+        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+        var target=odiv.offsetTop;
+        // console.log(target);
+
+        var current=0;
+        var time=setInterval(function () {
+            var speed=(target-scrollTop)/8;
+            speed=Math.ceil(speed);
+            current+=speed;
+            if(current>=target)
+            {
+                current=target;
+                clearInterval(time);
+            }
+
+            window.scrollTo(0,current);
+        },40)
+
+
+        e.preventDefault();
+    }
+}
+// nav控制模块header
+
+
+//返回按钮
+var ofanhui=document.getElementById("fanhui");
+
+window.onscroll=function () {
+    var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+    if(scrollTop>400)
+    {
+        ofanhui.style.display="block";
+    }
+}
+//返回按钮
+
+// section1
+var olunbo1ul=document.getElementById("lunbo1-ul");
+olunbo1ul.innerHTML+=olunbo1ul.innerHTML;
+var alunbo1li=olunbo1ul.getElementsByTagName("li");
+
+for(var i=0;i<alunbo1li.length;i++)
+{
+    alunbo1li[i].style.left=i*alunbo1li[0].offsetWidth+"px";
+}
+olunbo1ul.style.width=alunbo1li[0].offsetWidth*alunbo1li.length+"px";
+var olunboright=document.getElementById("section1-right");
+var olunboleft=document.getElementById("section1-left");
+var flag=1;
+var flag2=1;
+alunbo1li[1].className="a";
+olunboright.onclick=function () {
+    if(flag==0)
+    {
+        return;
+    }
+    flag=0;
+    setTimeout(function () {
+        flag=1;
+    },1000)
+    if(olunbo1ul.offsetLeft==0)
+    {
+        olunbo1ul.style.left=-olunbo1ul.offsetWidth/2+"px";
+    }
+
+    bianhuan(1);
+
+}
+olunboleft.onclick=function () {
+    if(flag2==0)
+    {
+        return;
+    }
+    flag2=0;
+    setTimeout(function () {
+        flag2=1;
+    },1000)
+    if(olunbo1ul.offsetLeft==-(alunbo1li.length*alunbo1li[0].offsetWidth)+3*alunbo1li[0].offsetWidth)
+    {
+        olunbo1ul.style.left=-alunbo1li[0].offsetWidth+"px";
+    }
+    bianhuan(-1)
+}
+function bianhuan(n) {
+    for(var i in alunbo1li)
+    {
+        alunbo1li[i].className="";
+    }
+    if(n>0)
+    {
+        var a=-olunbo1ul.offsetLeft/(alunbo1li[0].offsetWidth);
+    }
+    else
+    {
+        var a=-olunbo1ul.offsetLeft/(alunbo1li[0].offsetWidth)+2;
+    }
+    alunbo1li[a].className="a";
+    $(olunbo1ul).stop().animate(
+        {
+            left:(olunbo1ul.offsetLeft+(alunbo1li[0].offsetWidth)*n)
+        },1000
+    )
+
+}
+
+
+// section1
+
+
