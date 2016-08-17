@@ -37,7 +37,7 @@ for(var i=0;i<apart3.length;i++)
         adiv1[0].style.opacity=1;
         adiv1[0].style.top="41%";
         adiv1[1].style.opacity=0.6;
-        adiv1[2].style.transform="scale(1.1)";
+        adiv1[2].style.transform="scale(1.2)";
         this.onmouseout=function () {
             adiv1[0].style.opacity=0;
             adiv1[0].style.top="58%";
@@ -58,7 +58,7 @@ for(var i=0;i<apart4.length;i++)
         adiv1[0].style.opacity=1;
         adiv1[0].style.top="41%";
         adiv1[1].style.opacity=0.6;
-        adiv1[2].style.transform="scale(1.05)";
+        adiv1[2].style.transform="scale(1.2)";
         this.onmouseout=function () {
             adiv1[0].style.opacity=0;
             adiv1[0].style.top="58%";
@@ -89,7 +89,7 @@ function addPhotos() {
     var template=g("#wrap")[0].innerHTML;
     var html=[];
     var nav=[];
-    console.log(data[data.length-1]);
+    // console.log(data[data.length-1]);
     for(var s in data)
     {
         var _html='<div class="photo photo_front" onclick="turn(this)" id="photo_'+s+'"><div class="photo-wrap"><div class="side side-front"><p class="image"><img src="images/'+data[s].img+'" alt=""></p></div><div class="side side-back"><p class="desc">'+data[s].desc+'</p></div></div></div>';
@@ -190,7 +190,7 @@ function rsort(n) {
         navs[s].className=navs[s].className.replace(/\s*i_back\s*/,"");
     }
     g('#nav_'+n)[0].className+=' i_current '
-    console.log(photos_left.length,photos_right.length);
+    // console.log(photos_left.length,photos_right.length);
 }
 
 //  1.  画面控制
@@ -217,6 +217,7 @@ function turn(elem) {
 
 // nav控制模块 header
 var alink=document.querySelectorAll(".link")
+
 for(var i=0;i<alink.length;i++)
 {
     alink[i].onclick=function (e) {
@@ -229,22 +230,37 @@ for(var i=0;i<alink.length;i++)
         var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
         var target=odiv.offsetTop;
         // console.log(target);
+        var current=scrollTop;
+        if(target>current)
+        {
+            var time=setInterval(function () {
+                var speed=(target-scrollTop)/8;
+                speed=Math.ceil(speed);
+                current+=speed;
+                if(current>=target)
+                {
+                    current=target;
+                    clearInterval(time);
+                }
 
-        var current=0;
-        var time=setInterval(function () {
-            var speed=(target-scrollTop)/8;
-            speed=Math.ceil(speed);
-            current+=speed;
-            if(current>=target)
-            {
-                current=target;
-                clearInterval(time);
-            }
+                window.scrollTo(0,current);
+            },40)
+        }
+        else
+        {
+            var time=setInterval(function () {
+                var speed=(target-scrollTop)/8;
+                speed=Math.ceil(speed);
+                current+=speed;
+                if(current<=target)
+                {
+                    current=target;
+                    clearInterval(time);
+                }
 
-            window.scrollTo(0,current);
-        },40)
-
-
+                window.scrollTo(0,current);
+            },40)
+        }
         e.preventDefault();
     }
 }
@@ -253,13 +269,75 @@ for(var i=0;i<alink.length;i++)
 
 //返回按钮
 var ofanhui=document.getElementById("fanhui");
-
+var oheader=document.getElementById("header");
+var owrap=document.getElementById("wrap");
+var twrap=owrap.offsetTop;
+// console.log(twrap)
+var osection3=document.getElementById("section3");
+var tsection3=osection3.offsetTop;
+// console.log(tsection3);
+var osection0=document.getElementById("section0");
+var tsection0=osection0.offsetTop;
+var osection1=document.getElementById("section1");
+var tsection1=osection1.offsetTop;
+var ocontact=document.getElementById("contact");
+var tcontact=ocontact.offsetTop;
 window.onscroll=function () {
     var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
     if(scrollTop>400)
     {
         ofanhui.style.display="block";
     }
+    /*if(scrollTop>=0&&scrollTop<twrap)
+    {
+        for(var i=0;i<alink.length;i++)
+        {
+            alink[i].style.color="";
+        }
+        alink[0].style.color="yellow";
+    }
+    if(scrollTop>=twrap&&scrollTop<tsection3)
+    {
+        for(var i=0;i<alink.length;i++)
+        {
+            alink[i].style.color="";
+        }
+        alink[1].style.color="yellow";
+    }
+    if(scrollTop>=tsection3&&scrollTop<tsection0)
+    {
+        for(var i=0;i<alink.length;i++)
+        {
+            alink[i].style.color="";
+        }
+        alink[2].style.color="yellow";
+    }
+    if(scrollTop>=tsection0&&scrollTop<tsection1)
+    {
+        for(var i=0;i<alink.length;i++)
+        {
+            alink[i].style.color="";
+        }
+        alink[3].style.color="yellow";
+    }
+    if(scrollTop>=tsection1&&scrollTop<tcontact-100)
+    {
+        for(var i=0;i<alink.length;i++)
+        {
+            alink[i].style.color="";
+        }
+        alink[4].style.color="yellow";
+    }
+    if(scrollTop>=tcontact-100)
+    {
+        for(var i=0;i<alink.length;i++)
+        {
+            alink[i].style.color="";
+        }
+        alink[5].style.color="yellow";
+    }*/
+
+
 }
 //返回按钮
 
@@ -331,8 +409,214 @@ function bianhuan(n) {
     )
 
 }
-
-
 // section1
+
+// 登录弹出层
+var otanchuui=document.getElementById("tanchuui");
+var oui=document.getElementById("ui");
+var op=document.getElementById("p");
+var flag6=true;
+otanchuui.onclick=function () {
+    if(flag6)
+    {
+        oui.style.display="block";
+        flag6=!flag;
+    }
+    else
+    {
+        oui.style.display="none";
+        flag6=!flag6;
+    }
+
+}
+op.onclick=function () {
+    oui.style.display="none";
+    flag6=!flag6;
+}
+
+oui.onmousedown= function (e) {
+    e=e||window.event;
+    var chazhix= e.clientX-oui.offsetLeft;
+//        console.log(chazhix);
+    var chazhiy= e.clientY-oui.offsetTop;
+    document.onmousemove=function(e){
+        e=e||window.event;
+        oui.style.top= e.clientY-chazhiy+"px";
+        oui.style.left= e.clientX-chazhix+"px";
+    }
+
+    document.onmouseup=function(e)
+    {
+        document.onmousemove=null;
+    }
+    //return false;
+}
+// 登录弹出层
+
+// menu按钮
+var omenu=document.getElementById("menu");
+var onav=document.getElementById("nav");
+var flag3=1;
+$(omenu).on("click",function () {
+    if(flag3){
+        $(onav).stop().slideDown();
+        flag3=!flag3;
+    }
+    else
+    {
+        $(onav).stop().slideUp();
+        flag3=!flag3;
+    }
+})
+
+// menu按钮
+
+
+// section3
+var atu=document.querySelectorAll(".tu");
+// console.log(atu);
+for(var i in atu)
+{
+    // console.log(atu[0].children);
+
+    atu[i].onmouseover=function () {
+        var children=this.children;
+        // console.log(children);
+        children[1].style.display="block";
+        children[2].style.display="block";
+        this.onmouseout=function () {
+            children[1].style.display="none";
+            children[2].style.display="none";
+        }
+    }
+}
+
+// 蒙版打开关闭
+var omengban=document.getElementById("mengban");
+var oguanbi2=document.getElementById("guanbi2");
+var omengbancontent=document.getElementById("mengban-content");
+var aimg=document.querySelectorAll(".m");
+oguanbi2.onclick=function () {
+    omengban.style.display="none";
+    omengbancontent.style.display="none";
+}
+var oright=document.getElementById("you1");
+var oleft=document.getElementById("zuo1");
+var index2=0;
+oright.onclick=function () {
+    $(aimg[index2]).fadeOut("slow");
+    if(index2==3)
+    {
+        index2=0;
+        lunzhuan(index2);
+    }
+    else
+    {
+        index2++;
+        lunzhuan(index2);
+    }
+}
+oleft.onclick=function () {
+    $(aimg[index2]).fadeOut("slow");
+    if(index2==0)
+    {
+        index2=3;
+        lunzhuan(index2);
+    }
+    else
+    {
+        index2--;
+        lunzhuan(index2);
+    }
+}
+
+
+function lunzhuan(idx) {
+    // console.log(aimg)
+    for(var i=0;i<aimg.length;i++)
+    {
+        aimg[i].style.display="none";
+    }
+    $(aimg[idx]).fadeIn("slow");
+    // alert("hello");
+}
+// lunzhuan(index2);
+
+for(var i=0;i<atu.length;i++)
+{
+    atu[i].index=i;
+
+    atu[i].onclick=function () {
+        omengban.style.display="block";
+        omengbancontent.style.display="block";
+        // console.log(this.index)
+        index2=this.index;
+        lunzhuan(index2);
+    }
+}
+for(var i=0;i<aimg.length;i++)
+{
+    aimg[i].onclick=function () {
+        $(aimg[index2]).fadeOut("slow");
+        if(index2==3)
+        {
+            index2=0;
+            lunzhuan(index2);
+        }
+        else
+        {
+            index2++;
+            lunzhuan(index2);
+        }
+
+    }
+}
+
+// 蒙版打开关闭
+
+// section3
+
+// 鼠标划到才出现
+var height= $(window).height();
+
+var oxiangji=document.getElementById("xiangji");
+window.onscroll=function () {
+    var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+    // console.log(height);
+    var top0=osection3.offsetTop;
+    if(scrollTop>=osection3.offsetTop-height/1.5)
+    {
+        for(var i=0;i<aimg.length;i++)
+        {
+            atu[i].style.transform="scale(1)";
+        }
+        oxiangji.style.transform="scale(1)";
+
+    }
+
+
+
+}
+// 鼠标划到才出现
+
+/*
+var index3=0;
+var abj=document.querySelectorAll(".bj");
+function bianhuan2(current,idx) {
+   abj[current].style.opacity="0";
+    for(var i=0;i<abj.length;i++)
+    {
+        abj[i].style.opacity="0";
+    }
+    abj[idx].style.opacity="1";
+}
+var time=setInterval(function () {
+    if(index3>=abj.length)
+    {
+        index3=0;
+    }
+    bianhuan2(index3,index3++)
+},4000)
+*/
 
 
