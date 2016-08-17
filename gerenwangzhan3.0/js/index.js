@@ -587,7 +587,7 @@ window.onscroll=function () {
     var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
     // console.log(height);
     var top0=osection3.offsetTop;
-    if(scrollTop>=osection3.offsetTop-height/1.5)
+    if(scrollTop>=osection3.offsetTop-height)
     {
         for(var i=0;i<aimg.length;i++)
         {
@@ -598,7 +598,7 @@ window.onscroll=function () {
     }
     if(scrollTop>=oheader.offsetTop-height/1.7)
     {
-        otouxiang.style.animation="bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+        otouxiang.style.animation="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
         oyige.style.opacity="1";
     }
     if(scrollTop>=osection0.offsetTop-height/1.5)
