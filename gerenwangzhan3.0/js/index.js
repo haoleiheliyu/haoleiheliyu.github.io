@@ -604,11 +604,7 @@ window.onscroll=function () {
         oxiangji.style['-ms-transform']='scale(1)';
 
     }
-    if(scrollTop>=oheader.offsetTop-height/1.7)
-    {
-        otouxiang.style.animation="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
-        oyige.style.opacity="1";
-    }
+
     if(scrollTop>=osection0.offsetTop-height/1.5)
     {
         for(var i=0;i<ahoujia.length;i++)
@@ -641,5 +637,10 @@ var time=setInterval(function () {
     bianhuan2(index3,index3++)
 },4000)
 */
+
+
+    otouxiang.style.animation="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+    oyige.style.opacity="1";
+
 
 

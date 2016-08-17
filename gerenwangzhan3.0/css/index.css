@@ -77,18 +77,18 @@ body
         width: 100%;
         height: auto;
         padding-bottom: 50.7%;
-        background: url("../images/bg2333.jpg");
-        background-size: cover;
-        -webkit-background-size: cover;
-        background-attachment: fixed;
+        /*background: url("../images/bg2333.jpg");*/
+        /*background-size: cover;*/
+        /*-webkit-background-size: cover;*/
+        /*background-attachment: fixed;*/
         position: relative;
         overflow: hidden;
         /*text-align: center;*/
     }
     #header>img
     {
-        position: absolute;
-        /*position: fixed;*/
+        /*position: absolute;*/
+        position: fixed;
         top:0;
         width: 100%;
         /*display: none;*/
