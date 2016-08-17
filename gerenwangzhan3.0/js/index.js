@@ -354,7 +354,28 @@ olunbo1ul.style.width=alunbo1li[0].offsetWidth*alunbo1li.length+"px";
 var olunboright=document.getElementById("section1-right");
 var olunboleft=document.getElementById("section1-left");
 var flag=1;
-var flag2=1;
+// var flag2=1;
+var ahoujia2=document.querySelectorAll(".houjia2");
+for(var i=0;i<ahoujia2.length;i++)
+{
+    ahoujia2[i].onclick=function () {
+        if(flag==0)
+        {
+            return;
+        }
+        flag=0;
+        setTimeout(function () {
+            flag=1;
+        },1000)
+        if(olunbo1ul.offsetLeft==0)
+        {
+            olunbo1ul.style.left=-olunbo1ul.offsetWidth/2+"px";
+        }
+
+        bianhuan(1);
+
+    };
+}
 alunbo1li[1].className="a";
 olunboright.onclick=function () {
     if(flag==0)
@@ -374,13 +395,13 @@ olunboright.onclick=function () {
 
 }
 olunboleft.onclick=function () {
-    if(flag2==0)
+    if(flag==0)
     {
         return;
     }
-    flag2=0;
+    flag=0;
     setTimeout(function () {
-        flag2=1;
+        flag=1;
     },1000)
     if(olunbo1ul.offsetLeft==-(alunbo1li.length*alunbo1li[0].offsetWidth)+3*alunbo1li[0].offsetWidth)
     {
@@ -639,8 +660,12 @@ var time=setInterval(function () {
 */
 
 
-    otouxiang.style.animation="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
-    oyige.style.opacity="1";
+otouxiang.style.animation="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+otouxiang.style['-webkit-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+otouxiang.style['-o-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+otouxiang.style['-moz-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+otouxiang.style['-ms-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+oyige.style.opacity="1";
 
 
 

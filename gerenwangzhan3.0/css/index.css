@@ -187,8 +187,65 @@ body
         }
 
     }
+    #yige>h1
+    {
+        font-size: 2rem;
+    }
+    @keyframes bounce {
+        0%{
+            -webkit-transform: translateY(0vh) scaleY(.98);
+            transform: translateY(0vh) scaleY(.98);
+        }
+        80% {
+            -webkit-transform: translateY(8vh) scaleY(1.02);
+            transform: translateY(8vh) scaleY(1.02);
+        }
+        100% {
+            -webkit-transform: translateY(0vh) scaleY(.98);
+            transform: translateY(0vh) scaleY(.98);
+        }
+    }
 
 
+}
+
+@media  (max-width: 415px)
+{
+    #yige>h1
+    {
+        font-size: 1rem;
+    }
+
+    @keyframes bounce {
+        0%{
+            -webkit-transform: translateY(0vh) scaleY(.98);
+            transform: translateY(0vh) scaleY(.98);
+        }
+        80% {
+            -webkit-transform: translateY(6vh) scaleY(1.02);
+            transform: translateY(6vh) scaleY(1.02);
+        }
+        100% {
+            -webkit-transform: translateY(0vh) scaleY(.98);
+            transform: translateY(0vh) scaleY(.98);
+        }
+    }
+
+}
+@media  (max-width: 361px)
+{
+    #yige>h1
+    {
+        font-size: .9rem;
+    }
+
+}
+@media  (max-width: 321px)
+{
+    #yige>h1
+    {
+        font-size: .7rem;
+    }
 }
 /*响应式设计*/
 
@@ -514,11 +571,15 @@ body
 /**section0样式结束在此！！*/
 
 /*网页第二个模块！画廊！*/
+
+
 .wrap
 {
     position: relative;
     width: 100%;
-    height: 600px;
+    /*height: 600px;*/
+    height: 0;
+    padding-bottom: 66.66666666666667%;
     background: #333333;
     overflow: hidden;
     -webkit-perspective: 800px;
@@ -548,8 +609,8 @@ body
     height: 100%;
     background: #eee;
     position: absolute;
-    top:0;
-    right: 0;
+    /*top:0;*/
+    /*right: 0;*/
     padding: 10px;
     /*box-sizing: border-box;*/
 }
@@ -584,6 +645,9 @@ body
 /*反面*/
 .photo .side-back
 {
+    top:0;
+    right: 0;
+
 }
 .photo .side-back .desc
 {
@@ -764,6 +828,60 @@ body
     -o-transform: translate(360px,0px) rotateY(180deg);
     transform: translate(360px,0px) rotateY(180deg);
 }
+
+
+/*响应式*/
+@media  (max-width: 600px)
+{
+
+    .photo .side
+    {
+
+
+        padding: 5px;
+    }
+    .photo_center
+    {
+       /* left: 50%;
+        top:50%;
+        margin: -130px 0 0 -180px;*/
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 999;
+    }
+    .photo
+    {
+        width: 180px;
+        height: 120px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+    .photo_front .photo-wrap
+    {
+        -webkit-transform: translate(0px,0px) rotateY(0deg);
+        -moz-transform: translate(0px,0px) rotateY(0deg);
+        -ms-transform: translate(0px,0px) rotateY(0deg);
+        -o-transform: translate(0px,0px) rotateY(0deg);
+        transform: translate(0px,0px) rotateY(0deg);
+    }
+    .photo_back .photo-wrap
+    {
+        -webkit-transform: translate(180px,0px) rotateY(180deg);
+        -moz-transform: translate(180px,0px) rotateY(180deg);
+        -ms-transform: translate(180px,0px) rotateY(180deg);
+        -o-transform: translate(180px,0px) rotateY(180deg);
+        transform: translate(180px,0px) rotateY(180deg);
+    }
+
+}
+/*响应式*/
+
 /*画廊在此结束*/
 
 /*联系我模块*/
@@ -845,12 +963,17 @@ body
 /*返回按钮*/
 
 /*section1*/
+.houjia2
+{
+    cursor: pointer;
+}
 #section1
 {
     width: 100%;
     height:0;
     padding-bottom: 53.03314571607255%;
     position: relative;
+    overflow: hidden;
 }
 #lunbo1
 {
@@ -869,7 +992,7 @@ body
 {
     position: absolute;
     height: 266px;
-    background: gold;
+    /*background: gold;*/
     top:50%;
     margin-top: -133px;
 
@@ -880,9 +1003,6 @@ body
     height: 266px;
     /*float: left;*/
     position: absolute;
-
-
-
 }
 .a
 {
@@ -906,8 +1026,10 @@ body
 {
     display: inline-block;
     position: absolute;
-    z-index: 999;
+    z-index: 1004;
     cursor: pointer;
+    width: 6.5%;
+    height: 13%;
 }
 #section1-left
 {
@@ -921,6 +1043,80 @@ body
     top: 50%;
     margin-top: -37px;
 }
+/*section1响应式*/
+@media (max-width: 670px) {
+    #lunbo1
+    {
+        width: 600px;
+        margin: 0 auto;
+        height: 300px;
+        /*background: yellow;*/
+        position: absolute;
+        left: 50%;
+        margin-left: -300px;
+        top: 50%;
+        margin-top: -150px;
+        overflow: hidden;
+    }
+
+    #lunbo1>#lunbo1-ul
+    {
+        position: absolute;
+        height: 133px;
+        /*background: gold;*/
+        top:50%;
+        margin-top: -66px;
+
+    }
+
+    #lunbo1>#lunbo1-ul>li
+    {
+        width: 200px;
+        height: 133px;
+        /*float: left;*/
+        position: absolute;
+    }
+
+}
+
+@media (max-width: 361px)
+{
+    #lunbo1
+    {
+        width: 450px;
+        margin: 0 auto;
+        height: 225px;
+        /*background: yellow;*/
+        position: absolute;
+        left: 50%;
+        margin-left: -225px;
+        top: 50%;
+        margin-top: -122px;
+        overflow: hidden;
+    }
+
+    #lunbo1>#lunbo1-ul
+    {
+        position: absolute;
+        height: 100px;
+        /*background: gold;*/
+        top:50%;
+        margin-top: -50px;
+
+    }
+
+    #lunbo1>#lunbo1-ul>li
+    {
+        width: 150px;
+        height: 100px;
+        /*float: left;*/
+        position: absolute;
+    }
+
+}
+
+/*section1响应式*/
+
 
 /*section1*/
 
@@ -1047,7 +1243,7 @@ body
     background: white;
     border: 1px solid black;
     position: fixed;
-    left: 38%;
+    left: 36%;
     top:38%;
     /*margin-left: -150px;*/
     /*margin-top: -100px;*/
