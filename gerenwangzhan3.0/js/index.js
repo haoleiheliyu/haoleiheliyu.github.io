@@ -592,8 +592,16 @@ window.onscroll=function () {
         for(var i=0;i<aimg.length;i++)
         {
             atu[i].style.transform="scale(1)";
+            atu[i].style['-webkit-transform']='scale(1)';
+            atu[i].style['-o-transform']='scale(1)';
+            atu[i].style['-moz-transform']='scale(1)';
+            atu[i].style['-ms-transform']='scale(1)';
         }
         oxiangji.style.transform="scale(1)";
+        oxiangji.style['-webkit-transform']='scale(1)';
+        oxiangji.style['-o-transform']='scale(1)';
+        oxiangji.style['-moz-transform']='scale(1)';
+        oxiangji.style['-ms-transform']='scale(1)';
 
     }
     if(scrollTop>=oheader.offsetTop-height/1.7)
