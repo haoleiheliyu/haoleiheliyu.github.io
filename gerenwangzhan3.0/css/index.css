@@ -79,6 +79,7 @@ body
         padding-bottom: 50.7%;
         background: url("../images/bg2333.jpg");
         background-size: cover;
+        -webkit-background-size: cover;
         background-attachment: fixed;
         position: relative;
         overflow: hidden;
