@@ -587,7 +587,7 @@ window.onscroll=function () {
     var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
     // console.log(height);
     var top0=osection3.offsetTop;
-    if(scrollTop>=osection3.offsetTop-height)
+    if(scrollTop>=osection3.offsetTop-height/1.5)
     {
         for(var i=0;i<aimg.length;i++)
         {
