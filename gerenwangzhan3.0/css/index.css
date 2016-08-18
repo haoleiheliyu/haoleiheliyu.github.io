@@ -55,10 +55,11 @@ body
         transform-origin: center bottom;
         -moz-transform-origin:center bottom;
         -o-transform-origin:center bottom;
-        /*-webkit-animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50);*/
-        /*animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) ;*/
-
-
+        -webkit-animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50);
+        animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) ;
+        -o-animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) ;
+        -moz-animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) ;
+        -ms-animation:bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) ;
     }
     #touxiang>img
     {

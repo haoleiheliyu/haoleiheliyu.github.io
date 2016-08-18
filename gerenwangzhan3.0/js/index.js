@@ -690,12 +690,12 @@ var time=setInterval(function () {
 },4000)
 */
 
-
+/*
 otouxiang.style.animation="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
 otouxiang.style['-webkit-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
 otouxiang.style['-o-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
 otouxiang.style['-moz-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
-otouxiang.style['-ms-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";
+otouxiang.style['-ms-animation']="bounce 1.5s cubic-bezier(0.30, 2.40, 0.85, 2.50)";*/
 oyige.style.opacity="1";
 
 
