@@ -38,11 +38,22 @@ for(var i=0;i<apart3.length;i++)
         adiv1[0].style.top="41%";
         adiv1[1].style.opacity=0.6;
         adiv1[2].style.transform="scale(1.2)";
+        adiv1[2].style['-webkit-transform']="scale(1.2)";
+        adiv1[2].style['-moz-transform']="scale(1.2)";
+        adiv1[2].style['-ms-transform']="scale(1.2)";
+        adiv1[2].style['-o-transform']="scale(1.2)";
+
         this.onmouseout=function () {
             adiv1[0].style.opacity=0;
             adiv1[0].style.top="58%";
             adiv1[1].style.opacity=0;
             adiv1[2].style.transform="scale(1)";
+            adiv1[2].style['-webkit-transform']="scale(1)";
+            adiv1[2].style['-moz-transform']="scale(1)";
+            adiv1[2].style['-o-transform']="scale(1)";
+            adiv1[2].style['-ms-transform']="scale(1)";
+
+
         }
 
     }
@@ -59,11 +70,23 @@ for(var i=0;i<apart4.length;i++)
         adiv1[0].style.top="41%";
         adiv1[1].style.opacity=0.6;
         adiv1[2].style.transform="scale(1.2)";
+        adiv1[2].style['-webkit-transform']="scale(1.2)";
+        adiv1[2].style['-moz-transform']="scale(1.2)";
+        adiv1[2].style['-ms-transform']="scale(1.2)";
+        adiv1[2].style['-o-transform']="scale(1.2)";
+
+
         this.onmouseout=function () {
             adiv1[0].style.opacity=0;
             adiv1[0].style.top="58%";
             adiv1[1].style.opacity=0;
             adiv1[2].style.transform="scale(1)";
+            adiv1[2].style["-webkit-tranform"]="scale(1)";
+            adiv1[2].style["-moz-tranform"]="scale(1)";
+            adiv1[2].style["-ms-tranform"]="scale(1)";
+            adiv1[2].style["-o-tranform"]="scale(1)";
+
+
         }
 
     }
@@ -433,14 +456,22 @@ function bianhuan(n) {
 // section1
 
 // 登录弹出层
+
 var otanchuui=document.getElementById("tanchuui");
 var oui=document.getElementById("ui");
+var windowwidth=$(window).width();
+var windowheight=$(window).height();
+// console.log(windowwidth,windowheight);
+oui.style.left=(windowwidth/2-150)+"px";
+oui.style.top=(windowheight/2-100)+"px";
+
 var op=document.getElementById("p");
 var flag6=true;
 otanchuui.onclick=function () {
     if(flag6)
     {
         oui.style.display="block";
+
         flag6=!flag;
     }
     else

@@ -22,14 +22,23 @@ body
         0%{
             -webkit-transform: translateY(0vh) scaleY(.98);
             transform: translateY(0vh) scaleY(.98);
+            -moz-transform: translateY(0vh) scaleY(.98);
+            -o-transform: translateY(0vh) scaleY(.98);
+            -ms-transform: translateY(0vh) scaleY(.98);
         }
         80% {
             -webkit-transform: translateY(17vh) scaleY(1.02);
             transform: translateY(17vh) scaleY(1.02);
+            -moz-transform:translateY(17vh) scaleY(1.02);
+            -o-transform: translateY(17vh) scaleY(1.02);
+            -ms-transform: translateY(17vh) scaleY(1.02);
         }
         100% {
             -webkit-transform: translateY(0vh) scaleY(.98);
             transform: translateY(0vh) scaleY(.98);
+            -ms-transform:translateY(0vh) scaleY(.98);
+            -moz-transform: translateY(0vh) scaleY(.98);
+            -o-transform: translateY(0vh) scaleY(.98);
         }
     }
     #touxiang
@@ -44,6 +53,8 @@ body
         -webkit-transform-origin: center bottom;
         -ms-transform-origin: center bottom;
         transform-origin: center bottom;
+        -moz-transform-origin:center bottom;
+        -o-transform-origin:center bottom;
         /*-webkit-animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50);*/
         /*animation: bounce 1.3s cubic-bezier(0.30, 2.40, 0.85, 2.50) ;*/
 
@@ -63,6 +74,11 @@ body
         font-size: 1.5rem;
         font-family: 方正兰亭超细黑简体;
         opacity: 0;
+        /*transition: opacity 1.5s ease .7s;*/
+        -webkit-transition:opacity 1.5s ease .7s;
+        -moz-transition: opacity 1.5s ease .7s;
+        -ms-transition: opacity 1.5s ease .7s;
+        -o-transition: opacity 1.5s ease .7s;
         transition: opacity 1.5s ease .7s;
     }
 
@@ -195,14 +211,24 @@ body
         0%{
             -webkit-transform: translateY(0vh) scaleY(.98);
             transform: translateY(0vh) scaleY(.98);
+            -moz-transform:translateY(0vh) scaleY(.98);
+            -ms-transform:translateY(0vh) scaleY(.98);
+            -o-transform: translateY(0vh) scaleY(.98);
+
         }
         80% {
             -webkit-transform: translateY(8vh) scaleY(1.02);
             transform: translateY(8vh) scaleY(1.02);
+            -moz-transform: translateY(8vh) scaleY(1.02);
+            -o-transform: translateY(8vh) scaleY(1.02);
+            -ms-transform: translateY(8vh) scaleY(1.02);
         }
         100% {
             -webkit-transform: translateY(0vh) scaleY(.98);
             transform: translateY(0vh) scaleY(.98);
+            -moz-transform:translateY(0vh) scaleY(.98);
+            -ms-transform:translateY(0vh) scaleY(.98);
+            -o-transform: translateY(0vh) scaleY(.98);
         }
     }
 
@@ -220,14 +246,24 @@ body
         0%{
             -webkit-transform: translateY(0vh) scaleY(.98);
             transform: translateY(0vh) scaleY(.98);
+            -moz-transform: translateY(0vh) scaleY(.98);
+            -o-transform: translateY(0vh) scaleY(.98);
+            -ms-transform:translateY(0vh) scaleY(.98);
+
         }
         80% {
             -webkit-transform: translateY(6vh) scaleY(1.02);
             transform: translateY(6vh) scaleY(1.02);
+            -moz-transform: translateY(6vh) scaleY(1.02);
+            -o-transform: translateY(6vh) scaleY(1.02);
+            -ms-transform: translateY(6vh) scaleY(1.02);
         }
         100% {
             -webkit-transform: translateY(0vh) scaleY(.98);
             transform: translateY(0vh) scaleY(.98);
+            -moz-transform: translateY(0vh) scaleY(.98);
+            -o-transform: translateY(0vh) scaleY(.98);
+            -ms-transform: translateY(0vh) scaleY(.98);
         }
     }
 
@@ -371,6 +407,11 @@ body
     }
     #xiaoyuan>img:hover
     {
+        /*transform: rotate(360deg);*/
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform:rotate(360deg);
+        -o-transform: rotate(360deg);
         transform: rotate(360deg);
         /*transform: scale(1.2);*/
         opacity: 0.9;
@@ -406,6 +447,11 @@ body
         background: black;
         opacity: 0;
         /*display: none;*/
+        /*transition: all 400ms ;*/
+        -webkit-transition:all 400ms ;
+        -moz-transition: all 400ms ;
+        -ms-transition:all 400ms ;
+        -o-transition: all 400ms ;
         transition: all 400ms ;
         cursor: pointer;
     }
@@ -420,12 +466,16 @@ body
         z-index: 3;
         /*display: none;*/
         /*font-size: 30px;*/
-        -webkit-transition: all 1s;
-        /*-moz-transition: all time;*/
-        /*-ms-transition: all time;*/
-        /*-o-transition: all time;*/
-
+        -webkit-transition: all 200ms;
+        -moz-transition: all 200ms;
+        -ms-transition: all 200ms;
+        -o-transition: all 200ms;
         transition: all 200ms;
+        /*transition-delay: 200ms;*/
+        -webkit-transition-delay: 200ms;
+        -moz-transition-delay: 200ms;
+        -ms-transition-delay: 200ms;
+        -o-transition-delay:200ms;
         transition-delay: 200ms;
         opacity: 0;
         cursor: pointer;
@@ -674,6 +724,7 @@ body
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
     -webkit-transition: all .6s;
     -moz-transition: all .6s;
     -ms-transition: all .6s;
@@ -703,6 +754,7 @@ body
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
     backface-visibility: hidden;;
 }
 
@@ -908,8 +960,9 @@ body
     width: 100%;
     position: absolute;
     margin: 0 auto;
-    top: 17%;
+    top: 13%;
     font-family: fantasy;
+    font-size: 1.4rem;
 }
 #contact-form
 {
@@ -932,7 +985,8 @@ body
 #contact-form0>input
 {
     border:1px solid black;
-    height: 30px;
+    height: 1.5rem;
+    /*font-size: 1.5rem;*/
 
 }
 #contact-form0>textarea
@@ -945,6 +999,87 @@ body
     width: 100%;
     color: white;
     background: black;
+}
+#t1
+{
+    width: 100%;
+    height: 17rem;
+}
+@media (max-width: 1085px) {
+    #contact-h1
+    {
+
+        width: 100%;
+        position: absolute;
+        margin: 0 auto;
+        top: 10%;
+        font-family: fantasy;
+    }
+
+    #contact-form
+    {
+        position: absolute;
+        width: 100%;
+        /*height: 400px;*/
+        /*height: 60%;*/
+        /*margin: 0 auto;*/
+        /*background: red;*/
+        top: 22%;
+    }
+}
+@media (max-width: 963px)
+{
+    #t1
+    {
+        height: 15rem;
+    }
+
+}
+@media (max-width: 875px)
+{
+    #t1
+    {
+        height: 12rem;
+    }
+    #contact-form
+    {
+        top: 24%;
+    }
+}
+@media (max-width: 415px) {
+    #contact-h1
+    {
+        font-size: .7rem;
+    }
+    #t1
+    {
+        height: 5rem;
+    }
+    #contact-form0>input {
+        height: 1rem;
+    }
+    #contact-form0>textarea
+    {
+        margin-top: 3px;
+    }
+
+}
+
+@media (max-width: 321px)
+{
+    #contact-h1
+    {
+        font-size: .6rem;
+    }
+    #sub
+    {
+        margin-top: 1px;
+    }
+    #t1
+    {
+        height: 4.5rem;
+    }
+
 }
 
 
@@ -1243,8 +1378,8 @@ body
     background: white;
     border: 1px solid black;
     position: fixed;
-    left: 36%;
-    top:38%;
+    left: 50%;
+    top:50%;
     /*margin-left: -150px;*/
     /*margin-top: -100px;*/
     z-index: 1000;
@@ -1252,7 +1387,7 @@ body
 }
 #shangbian
 {
-    width: 300px;
+    width: 100%;
     height: 30px;
     line-height: 30px;
     background-color: black;
@@ -1266,6 +1401,7 @@ body
 {
     margin: 20px 0 15px 35px;
     padding: 5px;
+    /*width: 70%;*/
     /*background: red;*/
 
 }
