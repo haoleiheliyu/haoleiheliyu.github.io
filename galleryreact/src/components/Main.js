@@ -22,8 +22,15 @@ import ReactDOM from 'react-dom';
 // let yeomanImage = require('../images/yeoman.png');
 // 舞台代码
 
+
+// 产生随机位置的函数
 function getRangeRandom(low,high) {
   return Math.ceil(Math.random() * (high-low)+low);
+}
+//产生随机旋转角度的函数 0-30之间的任意正负值
+function get30deg() {
+  return (Math.random()>0.5?"":"-")+Math.ceil(Math.random()*30);
+
 }
 var AppComponent = React.createClass ({
   Constant:{
@@ -40,8 +47,24 @@ var AppComponent = React.createClass ({
       x:[0,0],
      topY:[0,0]
     }
-
   },
+  // 翻转图片
+  // 输入当前被执行inverse操作的图片对应的图片信息数组的index值
+  // return {Function}这是一个闭包函数,其内return一个真正待被执行的函数
+  inverse:function (index) {
+    return function () {
+      var imgsArrangeArr=this.state.imgsArrangeArr;
+      imgsArrangeArr[index].isInverse=!imgsArrangeArr[index].isInverse;
+      this.setState(
+        {
+          imgsArrangeArr:imgsArrangeArr
+        }
+      );
+    }.bind(this);
+  },
+
+
+
   // 重新布局所有元素,指定居中哪个图片
   rearrange:function (centerIndex) {
 
@@ -64,14 +87,18 @@ var AppComponent = React.createClass ({
        imgsArrangeCenterArr=imgsArrangeArr.splice(centerIndex,1);
         // 首先居中centerIndex图片
         imgsArrangeCenterArr[0].pos=centerPos;
+        imgsArrangeCenterArr[0].rotate=0;
         // 取出要布局上侧的图片的状态信息
       topImgSpliceIndex=Math.ceil((imgsArrangeArr.length-topImgNum) * Math.random());
     imgsArrangeTopArr=imgsArrangeArr.splice(topImgSpliceIndex,topImgNum);
     // 布局位于上侧的图片
     imgsArrangeTopArr.forEach(function (value,index) {
-      imgsArrangeTopArr[index].pos={
-        top:getRangeRandom(topY[0],topY[1]),
-        left:getRangeRandom(x[0],x[1])
+      imgsArrangeTopArr[index]={
+          pos:{
+            top:getRangeRandom(topY[0],topY[1]),
+            left:getRangeRandom(x[0],x[1])
+          },
+        rotate:get30deg()
       }
     });
     // 布局左右两侧的图片
@@ -87,9 +114,13 @@ var AppComponent = React.createClass ({
       {
         hPosRangeLORX=youfengquX;
       }
-      imgsArrangeArr[i].pos={
-        top:getRangeRandom(y[0],y[1]),
-        left:getRangeRandom(hPosRangeLORX[0],hPosRangeLORX[1])
+      imgsArrangeArr[i]={
+        pos:{
+          top:getRangeRandom(y[0],y[1]),
+          left:getRangeRandom(hPosRangeLORX[0],hPosRangeLORX[1])
+        },
+        rotate:get30deg()
+
       }
     }
 
@@ -117,10 +148,13 @@ var AppComponent = React.createClass ({
     return {
       imgsArrangeArr:[
         {
-          pos:{
-            /*left:'0',
-            top:'0'*/
-          }
+          /*pos:{
+            left:'0',
+            top:'0'
+          },
+          rotate:0,
+          isInverse:false //false正面,true反面
+          */
         }
       ]
 
@@ -176,14 +210,16 @@ var AppComponent = React.createClass ({
           pos:{
             left:0,
             right:0
-          }
+          },
+          rotate:0,
+          isInverse:false
         }
       }
 
       imgFigures.push(<ImgFigure data={imageDatas[i]} key={imageDatas[i].imageURL} ref={'imgFigure'+i}
-       arrange={this.state.imgsArrangeArr[i]} />);
+       arrange={this.state.imgsArrangeArr[i]} inverse={this.inverse(i)}/>);
     }
-    console.log(this.state.imgsArrangeArr[1]);
+    // console.log(this.state.imgsArrangeArr[1]);
     return (
      <div className="stage" ref='stage' id="stage">
        <div className="img-sec">
@@ -200,6 +236,17 @@ var AppComponent = React.createClass ({
 
 // 图片代码
 var ImgFigure=React.createClass({
+  // imgFigure的点击事件函数
+ /* handleClick:function (e) {
+    this.props.inverse();
+    e.stopPropagation();
+    e.preventDefault();
+  },*/
+  handleClick:function (e) {
+    this.props.inverse();
+    e.stopPropagation();
+    e.preventDefault();
+  },
   render:function () {
     var styleObj={};
     //如果props属性中指定了这张图片的位置，则使用
@@ -207,12 +254,32 @@ var ImgFigure=React.createClass({
     {
       styleObj=this.props.arrange.pos;
     }
+    if(this.props.arrange.rotate)
+    {
+      styleObj['transform']='rotate('+this.props.arrange.rotate+'deg)';
+      // styleObj['-webkit-transform']='rotate('+this.props.arrange.rotate+'deg)';
+      // styleObj['-moz-transform']='rotate('+this.props.arrange.rotate+'deg)';
+      // styleObj['-o-transform']='rotate('+this.props.arrange.rotate+'deg)';
+      // styleObj['-ms-transform']='rotate('+this.props.arrange.rotate+'deg)';
+    }
+    var imgFigureClassName="img-figure";
+      imgFigureClassName+=this.props.arrange.isInverse? ' is-inverse': '';
+
     return(
-      <div id="figure" className="img-figure" style={styleObj}>
-        <img src={this.props.data.imageURL} alt={this.props.data.desc} style={{width:'100%',height:'100%'}}/>
-       {/* <div id="figcaption">
-          <h2></h2>
-        </div>*/}
+      <div id="figure" className={imgFigureClassName} style={styleObj}>
+        <div className="front" onClick={this.handleClick} ref="a">
+          <img src={this.props.data.imageURL} alt={this.props.data.desc} style={{width:'100%',height:'100%'}}
+               />
+        </div>
+
+
+          <div className="img-back" onClick={this.handleClick} ref="b">
+            <p>
+              {this.props.data.desc}
+            </p>
+
+
+        </div>
       </div>
     )
 
