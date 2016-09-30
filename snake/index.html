@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇（面向对象版）</title>
+	<style>
+		*{	
+			padding: 0;
+			margin: 0;
+		}	
+		#container{
+			width: 1000px;
+			height: 550px;
+			margin: 0 auto;
+			border: 1px solid #000;
+		}
+		#ground{
+			width: 1000px;
+			height: 500px;
+			background: #0f0;
+			position: relative;
+		}
+		#control{
+			width: 1000px;
+			height: 50px;
+			line-height: 50px;
+		}
+		/*#brand{
+			font-family: "Microsoft YaHei";
+			float: left;
+			font-weight: bold;
+			font-size: 20px;
+		}*/
+		.cont-options{
+			font-family: "Microsoft YaHei";
+			font-weight: bold;
+			font-size: 20px;	
+			float: left;
+		}
+		.grounddiv{
+			width: 20px;
+			height: 20px;
+			background: #0f0;
+			float: left;
+		}
+		.snakediv{
+			width: 20px;
+			height: 20px;
+			background: #f00;
+			position: absolute;
+		}
+		.fooddiv{
+			width: 20px;
+			height: 20px;
+			background: #fff;
+			position: absolute;
+		}
+		#score{
+			float: right;
+			margin-right: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="ground"></div>
+		<div id="control">
+			<span class="cont-options">游戏规则：</span>
+			<span class="cont-options">开始:S&nbsp&nbsp暂停:P&nbsp&nbsp高速:A&nbsp&nbsp中速:B&nbsp&nbsp低速:C&nbsp&nbsp重新开始:R</span>
+			<div id="score">
+				<span class="cont-options">分数:</span>
+				<span class="cont-options">0</span>
+			</div>
+
+		</div>
+	</div>
+	<script src='jquery-1.9.1.min.js'></script>
+	<script>
+		(function(){
+			var snakeBody = [];
+			var ofood = [];
+			var timer = 0;	
+			var ground = {
+				init:function(){
+					game.createDiv({
+						number: 25*50, 
+						cls: 'grounddiv', 
+						containerSelector:'#ground' 
+					});
+				}
+			};
+			var snake = {
+				direction:'right',
+				speed:200,
+				eatnumber:0,
+				move:function(){
+					var snakeHead = snakeBody[0];
+					var nextPos;
+					if(snake.direction == 'left'){
+						nextPos = {
+							left: snakeHead.offsetLeft - 20,
+							top: snakeHead.offsetTop
+						};
+					}else if(snake.direction == 'top'){
+						nextPos = {
+							left: snakeHead.offsetLeft,
+							top: snakeHead.offsetTop - 20
+						};
+					}else if(snake.direction == 'right'){
+						nextPos = {
+							left: snakeHead.offsetLeft + 20,
+							top: snakeHead.offsetTop
+						};
+					}else if(snake.direction == 'down'){
+						nextPos = {
+							left: snakeHead.offsetLeft,
+							top: snakeHead.offsetTop + 20
+						};
+					}
+					if(nextPos.left == ofood[0].offsetLeft && nextPos.top == ofood[0].offsetTop){
+						$('.cont-options').eq(3).html((snake.eatnumber+1)*100);
+						snake.eatnumber++;
+						ofood[0].className = 'snakediv';
+						ofood[0].style.left = snakeHead.offsetLeft + 'px';
+						ofood[0].style.top = snakeHead.offsetTop + 'px';
+						snakeHead.style.left = nextPos.left + 'px';
+						snakeHead.style.top = nextPos.top + 'px';
+						snakeBody.splice(1,0,ofood[0]);
+						food.init();
+					}else{
+						if (nextPos.left <= -20) {
+							nextPos.left = 980;
+						}
+						if (nextPos.left >= 1000) {
+							nextPos.left = 0;
+						}
+						if (nextPos.top <= -20) {
+							nextPos.top = 480;
+						}
+						if (nextPos.top >= 500) {
+							nextPos.top = 0;
+						}
+
+
+						for(var i=0; i<snakeBody.length; i++){
+							var nowPos = {
+								left: snakeBody[i].offsetLeft,
+								top: snakeBody[i].offsetTop
+							};
+							snakeBody[i].style.left = nextPos.left + 'px';
+							snakeBody[i].style.top = nextPos.top + 'px';
+							nextPos = nowPos;
+						}
+					}
+					for(var i=4; i<snakeBody.length; i++){
+					if(snakeBody[i].offsetLeft == snakeHead.offsetLeft && snakeBody[i].offsetTop == snakeHead.offsetTop){
+						alert('很遗憾~游戏结束！'+'    '+'您一共得了'+snake.eatnumber*100+'分！');
+						clearInterval(timer);
+					}
+				}
+				},
+				init:function(){
+					snakeBody = game.createDiv({
+						number: 3, 
+						cls: 'snakediv', 
+						containerSelector: '#ground', 
+						left: [60,40,20], 
+						top: [60,60,60]
+					});
+				}
+			};
+			var food = {
+				init:function(){
+					do{
+						var bFlag = true;//一个标识位，true代表找到合适的食物坐标
+						ofood = game.createDiv({
+							number: 1, 
+							cls: 'fooddiv', 
+							containerSelector: '#ground', 
+							left: [20*(parseInt(50*Math.random()))], 
+							top: [20*(parseInt(25*Math.random()))]
+						});
+						for(var i=0; i<snakeBody.length; i++){
+							if(snakeBody[i].offsetLeft == ofood.offsetLeft && snakeBody[i].offsetTop == ofood.offsetTop){
+								bFlag = false;
+							}
+						}
+					}while(!bFlag);
+				}
+			};
+			var game = {
+				createDiv:function(obj){
+					var createdDiv = [];
+					for (var i = 0; i < obj.number; i++) {
+						var div = document.createElement('div');
+						div.className = obj.cls;
+						if (obj.top) {
+							$(div).offset({left:obj.left[i],top:obj.top[i]});
+						}
+						$(obj.containerSelector).append(div);
+						createdDiv.push(div);
+					}
+					return createdDiv;
+				},
+				reStart:function(){
+					$('.grounddiv').remove();
+					$('.fooddiv').remove();
+					$('.snakediv').remove();
+					ground.init();
+					snake.init();
+					food.init();
+				},
+				init:function(){
+					ground.init();
+					snake.init();
+					food.init();
+					$(document).on('keydown',function(e){
+						e = e || window.event;
+						var keyCode = e.which || e.keyCode;
+						if (keyCode == 37||keyCode == 38||keyCode == 39||keyCode == 40) {//方向控制
+							if(keyCode ==  37){//left
+								if(snake.direction != 'right'){
+									snake.direction = 'left';
+								}
+							}else if(keyCode ==  38){//top
+								if(snake.direction != 'down'){
+									snake.direction = 'top';
+								}
+
+							}else if(keyCode ==  39){//right
+								if(snake.direction != 'left'){
+									snake.direction = 'right';
+								}
+
+							}else if(keyCode ==  40){//down
+								if(snake.direction != 'top'){
+									snake.direction = 'down';
+								}
+							}
+							snake.move();
+						}else{                           //操作台操作
+							if(keyCode ==  80){//暂停
+								clearInterval(timer);
+							}
+							else if(keyCode ==  83){//开始
+								clearInterval(timer);
+								timer = setInterval(function(){
+									snake.move();
+								},snake.speed);
+							}
+							else if(keyCode ==  65){//A档
+								snake.speed = 20;
+								clearInterval(timer);
+								timer = setInterval(function(){
+									snake.move();
+								},snake.speed);
+							}
+							else if(keyCode ==  66){//B档
+								snake.speed = 80;
+								clearInterval(timer);
+								timer = setInterval(function(){
+									snake.move();
+								},snake.speed);
+							}
+							else if(keyCode ==  67){//C档
+								snake.speed = 150;
+								clearInterval(timer);
+								timer = setInterval(function(){
+									snake.move();
+								},snake.speed);
+							}
+							else if(keyCode ==  82){//重新开始
+								clearInterval(timer);
+								snake.speed = 200;
+								snake.direction = 'right';
+								$('.cont-options').eq(3).html("0");
+								snake.eatnumber=0;
+								game.reStart();
+							}
+						}
+					});
+				}
+			};
+			game.init();
+		})();
+
+	</script>
+</body>
+</html>
